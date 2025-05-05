@@ -365,7 +365,7 @@
     @apply pb-20 flex flex-col lg:flex-row gap-5 justify-between;
   }
 
-  .status-column {
+  .userRole-column {
     @apply flex justify-center items-center gap-1 w-[65px] py-[2px]  rounded-2xl mix-blend-multiply;
   }
 

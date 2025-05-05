@@ -8,7 +8,7 @@ declare interface BaseUser {
 
 declare interface UserData extends BaseUser {
   itineraryCreated: number | string;
-  status: "user" | "admin";
+  userRole: "user" | "admin";
 }
 
 declare type User = BaseUser;
