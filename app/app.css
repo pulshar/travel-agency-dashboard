@@ -438,10 +438,10 @@
     @apply text-sm md:text-base font-semibold;
   }
   .button-class {
-    @apply !bg-primary-100 !px-4 !rounded-lg !flex !items-center !justify-center !gap-1.5 !shadow-none;
+    @apply !bg-primary-100 !px-6 !rounded-lg !flex !items-center !justify-center !gap-1.5 !shadow-none;
   }
   .button-class-secondary {
-    @apply !bg-white !px-4 !rounded-lg !flex !items-center !justify-center !gap-1.5 !shadow-sm;
+    @apply !bg-white !px-6 !rounded-lg !flex !items-center !justify-center !gap-1.5 !shadow-sm;
   }
   .form-label {
     @apply text-sm font-normal text-gray-100;

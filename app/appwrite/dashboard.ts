@@ -144,10 +144,10 @@ export const getTripsByTravelStyle = async () => {
 
     const travelStyleCounts = trips.documents.reduce(
         (acc: { [key: string]: number }, trip: Document) => {
-            const tripDetail = parseTripData(trip.tripDetails);
+            const tripDetails = parseTripData(trip.tripDetails);
 
-            if (tripDetail && tripDetail.travelStyle) {
-                const travelStyle = tripDetail.travelStyle;
+            if (tripDetails && tripDetails.travelStyle) {
+                const travelStyle = tripDetails.travelStyle;
                 acc[travelStyle] = (acc[travelStyle] || 0) + 1;
             }
             return acc;
