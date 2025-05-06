@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const formatDate = (dateString: string): string => {
-    return dayjs(dateString).format("DD MMMM, YYYY");
+    return dayjs(dateString).format("MMMM DD, YYYY");
 };
 
 export function parseMarkdownToJson(markdownText: string): unknown | null {

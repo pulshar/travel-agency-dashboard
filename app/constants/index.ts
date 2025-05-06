@@ -196,7 +196,7 @@ export const users = [
     imageUrl: "/assets/images/david.webp",
     dateJoined: formatDate("2025-01-01"),
     itineraryCreated: 10,
-    status: "user",
+    userRole: "user",
   },
   {
     id: 2,
@@ -205,7 +205,7 @@ export const users = [
     imageUrl: "/assets/images/david.webp",
     dateJoined: formatDate("2025-01-02"),
     itineraryCreated: 4,
-    status: "user",
+    userRole: "user",
   },
   {
     id: 3,
@@ -214,6 +214,6 @@ export const users = [
     imageUrl: "/assets/images/david.webp",
     dateJoined: formatDate("2025-01-03"),
     itineraryCreated: 8,
-    status: "admin",
+    userRole: "admin",
   },
 ];

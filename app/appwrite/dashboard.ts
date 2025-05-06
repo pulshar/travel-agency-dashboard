@@ -34,7 +34,7 @@ export const getUsersAndTripsStats = async (): Promise<DashboardStats> => {
     )).length;
 
     const filterUsersByRole = (role: string) => {
-        return users.documents.filter((u: Document) => u.status === role)
+        return users.documents.filter((u: Document) => u.userRole === role)
     }
 
     return {
