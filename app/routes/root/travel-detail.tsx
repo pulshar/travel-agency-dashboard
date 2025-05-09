@@ -165,6 +165,7 @@ export default function TravelDetail({ loaderData }: Route.ComponentProps) {
           <ul className="itinerary">
             {itinerary?.map((dayPlan: DayPlan, index: number) => (
               <li key={index}>
+                <hr className="my-8 text-gray-500/60 border-dashed" />
                 <h3>
                   Day {dayPlan.day}: {dayPlan.location}
                 </h3>
@@ -186,6 +187,7 @@ export default function TravelDetail({ loaderData }: Route.ComponentProps) {
           {visitTimeAndWeatherInfo.map((section) => (
             <section key={section.title} className="visit">
               <div>
+                <hr className="my-8 text-gray-500/60 border-dashed" />
                 <h3>{section.title}</h3>
 
                 <ul>
@@ -200,7 +202,10 @@ export default function TravelDetail({ loaderData }: Route.ComponentProps) {
           ))}
 
           <a href={paymentLink} className="flex">
-            <ButtonComponent className="button-class" type="submit">
+            <ButtonComponent
+              className="button-class w-full md:w-auto"
+              type="submit"
+            >
               <span className="p-16-semibold text-white">
                 Pay to join the trip
               </span>
@@ -211,6 +216,7 @@ export default function TravelDetail({ loaderData }: Route.ComponentProps) {
       </div>
 
       <section className="flex flex-col gap-6">
+        <hr className="my-8 text-gray-500/60 border-dashed" />
         <h2 className="p-24-semibold text-dark-100">Popular Trips</h2>
 
         <div className="trip-grid">
