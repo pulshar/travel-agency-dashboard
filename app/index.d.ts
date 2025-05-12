@@ -90,7 +90,7 @@ declare interface StatsCard {
   currentMonthCount: number;
 }
 declare interface CardProps {
-  headerTitle: string;
+  headerTitle?: string;
   children: React.ReactNode;
 }
 declare interface TrendResult {

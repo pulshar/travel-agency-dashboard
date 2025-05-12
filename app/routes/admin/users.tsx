@@ -2,9 +2,12 @@ import {
   ColumnDirective,
   ColumnsDirective,
   GridComponent,
+  Inject,
+  Page,
+  Sort,
 } from "@syncfusion/ej2-react-grids";
 import { getAllUsers } from "~/appwrite/auth";
-import { Header } from "~/components";
+import { Header, TableCard } from "~/components";
 import { cn, formatDate } from "~/lib/utils";
 import type { Route } from "./+types/users";
 
@@ -23,8 +26,8 @@ export default function Users({ loaderData }: Route.ComponentProps) {
         title="Manage Users"
         description="Filter, sort, and access detailed user profiles"
       />
-
-      <GridComponent dataSource={users} gridLines="None">
+    <TableCard>
+      <GridComponent dataSource={users} gridLines="None" allowPaging={true} pageSettings={{ pageSize: 10 }} allowSorting={true}>
         <ColumnsDirective>
           <ColumnDirective
             field="name"
@@ -88,7 +91,9 @@ export default function Users({ loaderData }: Route.ComponentProps) {
             )}
           />
         </ColumnsDirective>
+        <Inject services={[Page, Sort]}/>
       </GridComponent>
+      </TableCard>
     </main>
   );
 }

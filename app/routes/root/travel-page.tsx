@@ -19,7 +19,7 @@ const FeaturedDestination = ({
 }: DestinationProps) => (
   <section
     className={cn(
-      "rounded-[14px] overflow-hidden bg-cover bg-center size-full min-w-[280px]",
+      "rounded-10 overflow-hidden bg-cover bg-center size-full min-w-[280px]",
       containerClass,
       bgImage
     )}
@@ -28,7 +28,7 @@ const FeaturedDestination = ({
       <article className="featured-card">
         <div
           className={cn(
-            "bg-white flex gap-2 rounded-20 font-bold  w-fit py-1 px-3 text-sm"
+            "bg-white flex gap-2 rounded-10 font-bold  w-fit py-1 px-3 text-sm"
           )}
         >
           {rating}
