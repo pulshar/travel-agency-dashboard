@@ -40,11 +40,11 @@
 
   --background-image-auth: url("/assets/images/auth-img.webp");
   --background-image-hero: url("/assets/images/hero-img.png");
-  --background-image-card-1: url("/assets/images/card-img-1.png");
+  --background-image-card-1: url("/assets/images/card-img-1.jpg");
   --background-image-card-2: url("/assets/images/card-img-2.png");
   --background-image-card-3: url("/assets/images/card-img-3.png");
   --background-image-card-4: url("/assets/images/card-img-4.png");
-  --background-image-card-5: url("/assets/images/card-img-5.png");
+  --background-image-card-5: url("/assets/images/card-img-5.webp");
   --background-image-card-6: url("/assets/images/card-img-6.png");
   --background-image-linear100: linear-gradient(
           105deg,
@@ -75,7 +75,10 @@
   .all-users {
     @apply w-full min-h-screen  flex flex-col gap-10;
   }
+  .card {
+    @apply p-6 flex flex-col gap-6 bg-white shadow-400 rounded-20;
 
+  }
   .stats-card {
     @apply p-6 flex flex-col gap-6 bg-white shadow-400 rounded-20 text-dark-100;
 
@@ -83,7 +86,9 @@
       @apply flex flex-row md:flex-col-reverse xl:flex-row xl:items-center gap-3 justify-between;
     }
   }
-
+.table-card {
+    @apply flex flex-col bg-white shadow-400 rounded-20 text-dark-100 overflow-hidden;
+  }
   .sign-in-card {
     @apply flex bg-white flex-col border border-light-100 md:max-w-[510px] rounded-[20px] py-10 px-6 w-full;
     header {
@@ -488,9 +493,9 @@ body {
   border-color: #eef9ff !important;
 }
 
-.e-control {
+/* .e-control {
   border-radius: 12px !important;
-}
+} */
 
 .e-grid .e-gridheader {
   border-color: #eef9ff !important;

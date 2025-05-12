@@ -13,6 +13,7 @@ import {
   ColumnsDirective,
   GridComponent,
   Inject,
+  Sort,
 } from "@syncfusion/ej2-react-grids";
 import { getAllUsers, getUser } from "~/appwrite/auth";
 import {
@@ -21,7 +22,7 @@ import {
   getUsersAndTripsStats,
 } from "~/appwrite/dashboard";
 import { getAllTrips } from "~/appwrite/trips";
-import { Header, StatsCard, TripCard } from "~/components";
+import { Card, Header, StatsCard, TableCard, TripCard } from "~/components";
 import { tripXAxis, tripyAxis, userXAxis, useryAxis } from "~/constants";
 import { parseTripData } from "~/lib/utils";
 import type { Route } from "./+types/dashboard";
@@ -120,7 +121,7 @@ const Dashboard = ({ loaderData }: Route.ComponentProps) => {
           />
         </div>
       </section>
-      <section className="container">
+      <section className="container max-w-full">
         <h1 className="text-xl font-semibold text-dark-100">Created Trips</h1>
 
         <div className="trip-grid">
@@ -139,83 +140,100 @@ const Dashboard = ({ loaderData }: Route.ComponentProps) => {
       </section>
 
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <ChartComponent
-          id="chart-1"
-          primaryXAxis={userXAxis}
-          primaryYAxis={useryAxis}
-          title="User Growth"
-          tooltip={{ enable: true }}
-        >
-          <Inject
-            services={[
-              ColumnSeries,
-              SplineAreaSeries,
-              Category,
-              DataLabel,
-              Tooltip,
-            ]}
-          />
-
-          <SeriesCollectionDirective>
-            <SeriesDirective
-              dataSource={userGrowth}
-              xName="day"
-              yName="count"
-              type="Column"
-              name="Column"
-              columnWidth={0.3}
-              cornerRadius={{ topLeft: 10, topRight: 10 }}
+        <Card headerTitle="User Growth">
+          <ChartComponent
+            id="chart-1"
+            primaryXAxis={userXAxis}
+            primaryYAxis={useryAxis}
+            // title="User Growth"
+            titleStyle={{
+              textAlignment: "Near",
+              fontFamily: "Figtree",
+              size: "var(--text-base)",
+              fontWeight: "var(--font-weight-medium)",
+            }}
+            tooltip={{ enable: true }}
+          >
+            <Inject
+              services={[
+                ColumnSeries,
+                SplineAreaSeries,
+                Category,
+                DataLabel,
+                Tooltip,
+              ]}
             />
 
-            <SeriesDirective
-              dataSource={userGrowth}
-              xName="day"
-              yName="count"
-              type="SplineArea"
-              name="Wave"
-              fill="rgba(71, 132, 238, 0.3)"
-              border={{ width: 2, color: "#4784EE" }}
-            />
-          </SeriesCollectionDirective>
-        </ChartComponent>
+            <SeriesCollectionDirective>
+              <SeriesDirective
+                dataSource={userGrowth}
+                xName="day"
+                yName="count"
+                type="Column"
+                name="Column"
+                columnWidth={0.3}
+                cornerRadius={{ topLeft: 10, topRight: 10 }}
+              />
 
-        <ChartComponent
-          id="chart-2"
-          primaryXAxis={tripXAxis}
-          primaryYAxis={tripyAxis}
-          title="Trip Trends"
-          tooltip={{ enable: true }}
-        >
-          <Inject
-            services={[
-              ColumnSeries,
-              SplineAreaSeries,
-              Category,
-              DataLabel,
-              Tooltip,
-            ]}
-          />
-
-          <SeriesCollectionDirective>
-            <SeriesDirective
-              dataSource={tripsByTravelStyle}
-              xName="travelStyle"
-              yName="count"
-              type="Column"
-              name="day"
-              columnWidth={0.3}
-              cornerRadius={{ topLeft: 10, topRight: 10 }}
+              <SeriesDirective
+                dataSource={userGrowth}
+                xName="day"
+                yName="count"
+                type="SplineArea"
+                name="Wave"
+                fill="rgba(71, 132, 238, 0.3)"
+                border={{ width: 2, color: "#4784EE" }}
+              />
+            </SeriesCollectionDirective>
+          </ChartComponent>
+        </Card>
+        <Card headerTitle="Trip Trends">
+          <ChartComponent
+            id="chart-2"
+            primaryXAxis={tripXAxis}
+            primaryYAxis={tripyAxis}
+            // title="Trip Trends"
+            titleStyle={{
+              textAlignment: "Near",
+              fontFamily: "Figtree",
+              size: "var(--text-base)",
+              fontWeight: "var(--font-weight-medium)",
+            }}
+            tooltip={{ enable: true }}
+          >
+            <Inject
+              services={[
+                ColumnSeries,
+                SplineAreaSeries,
+                Category,
+                DataLabel,
+                Tooltip,
+              ]}
             />
-          </SeriesCollectionDirective>
-        </ChartComponent>
+
+            <SeriesCollectionDirective>
+              <SeriesDirective
+                dataSource={tripsByTravelStyle}
+                xName="travelStyle"
+                yName="count"
+                type="Column"
+                name="day"
+                columnWidth={0.3}
+                cornerRadius={{ topLeft: 10, topRight: 10 }}
+              />
+            </SeriesCollectionDirective>
+          </ChartComponent>
+        </Card>
       </section>
 
-      <section className="user-trip wrapper">
+      <section className="user-trip">
         {usersAndTrips.map(({ title, dataSource, field, headerText }, i) => (
-          <div key={i} className="flex flex-col gap-5">
-            <h3 className="p-20-semibold text-dark-100">{title}</h3>
-
-            <GridComponent dataSource={dataSource} gridLines="None">
+          <TableCard headerTitle={title} key={i}>
+            <GridComponent
+              dataSource={dataSource}
+              gridLines="None"
+              allowSorting={true}
+            >
               <ColumnsDirective>
                 <ColumnDirective
                   field="name"
@@ -242,8 +260,9 @@ const Dashboard = ({ loaderData }: Route.ComponentProps) => {
                   textAlign="Left"
                 />
               </ColumnsDirective>
+              <Inject services={[Sort]} />
             </GridComponent>
-          </div>
+          </TableCard>
         ))}
       </section>
     </main>

@@ -102,17 +102,18 @@ export const comboBoxItems = {
   budget: budgetOptions,
 } as Record<keyof TripFormData, string[]>;
 
-export const userXAxis: AxisModel = { valueType: "Category", title: "Day" };
+// export const userXAxis: AxisModel = { valueType: "Category", title: "Day" };
+export const userXAxis: AxisModel = { valueType: "Category"};
 export const useryAxis: AxisModel = {
   minimum: 0,
   maximum: 10,
   interval: 2,
-  title: "Count",
+  // title: "Count",
 };
 
 export const tripXAxis: AxisModel = {
   valueType: "Category",
-  title: "Travel Styles",
+  // title: "Travel Styles",
   majorGridLines: { width: 0 },
 };
 
@@ -120,7 +121,7 @@ export const tripyAxis: AxisModel = {
   minimum: 0,
   maximum: 10,
   interval: 2,
-  title: "Count",
+  // title: "Count",
 };
 
 export const CONFETTI_SETTINGS = {
