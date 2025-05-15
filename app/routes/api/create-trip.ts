@@ -1,10 +1,9 @@
 import { GoogleGenAI } from "@google/genai";
-import { ID } from "appwrite";
+import { ID, Query } from "appwrite";
 import { data, type ActionFunctionArgs } from "react-router";
 import { appwriteConfig, database } from "~/appwrite/client";
 import { createProduct } from "~/lib/stripe";
 import { parseMarkdownToJson, parseTripData } from "~/lib/utils";
-
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   const {
@@ -102,19 +101,37 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     const tripDetails = parseTripData(result.tripDetails) as Trip;
     const tripPrice = parseInt(tripDetails.estimatedPrice.replace("$", ""), 10);
     const paymentLink = await createProduct(
-        tripDetails.name,
-        tripDetails.description,
-        imageUrls,
-        tripPrice,
-        result.$id
-    )
+      tripDetails.name,
+      tripDetails.description,
+      imageUrls,
+      tripPrice,
+      result.$id
+    );
 
     await database.updateDocument(
       appwriteConfig.databaseId,
       appwriteConfig.tripCollectionId,
       result.$id,
       {
-        payment_link: paymentLink.url
+        payment_link: paymentLink.url,
+      }
+    );
+
+    const userData = await database.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      [Query.equal("accountId", userId), Query.select(["$id", "tripsCreated"])]
+    );
+
+    const { $id, tripsCreated } = userData.documents[0];
+    const currentTrips = tripsCreated;
+
+    await database.updateDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      $id,
+      {
+        tripsCreated: currentTrips + 1,
       }
     );
 

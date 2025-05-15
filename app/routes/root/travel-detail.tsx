@@ -203,9 +203,10 @@ export default function TravelDetail({ loaderData }: Route.ComponentProps) {
 
           <a href={paymentLink} className="flex">
             <ButtonComponent
-              className="button-class w-full md:w-auto"
+              className="button-class w-full md:w-auto !py-2"
               type="submit"
             >
+              {/* TODO: remove if user is admin */}
               <span className="p-16-semibold text-white">
                 Pay to join the trip
               </span>

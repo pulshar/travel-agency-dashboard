@@ -169,11 +169,11 @@
     @apply flex flex-col gap-10 pb-20;
 
     .travel-div {
-      @apply flex flex-col lg:flex-row gap-10;
+      @apply flex flex-col lg:flex-row gap-6 lg:gap-10;
     }
 
     .back-link {
-      @apply flex items-center justify-center gap-2.5 py-3 px-[30px] border-gray-200 rounded-lg shadow-500 bg-white h-[50px] w-[240px];
+      @apply flex items-center justify-center gap-2.5 py-3 px-[30px] border border-gray-500 rounded-lg  bg-white h-[50px] md:w-[240px];
 
       img {
         @apply size-[17px];
@@ -442,7 +442,7 @@
     @apply text-sm md:text-base font-semibold;
   }
   .button-class {
-    @apply !bg-primary-100 !px-6 !rounded-lg !flex !items-center !justify-center !gap-1.5 !shadow-none;
+    @apply !bg-primary-100 !px-6 !rounded-lg !flex !items-center !justify-center !gap-1.5 !shadow-none !font-figtree;
   }
   .button-class-secondary {
     @apply !bg-white !px-6 !rounded-lg !flex !items-center !justify-center !gap-1.5 !shadow-sm;
