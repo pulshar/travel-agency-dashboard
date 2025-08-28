@@ -15,12 +15,12 @@ import { cn, formatKey } from "~/lib/utils";
 import type { Route } from "./+types/create-trip";
 
 export const loader = async () => {
-  const response = await fetch("https://restcountries.com/v3.1/all");
+  const response = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,latlng,maps");
   const data = await response.json();
-
   return data.map((country: any) => ({
     // name: country.flag + country.name.common,
     name: country.name.common,
+    flag: country.flags?.png || "",
     coordinates: country.latlng,
     value: country.name.common,
     openStreetMap: country.maps?.openStreetMap,
@@ -102,6 +102,7 @@ export default function CreateTrip({ loaderData }: Route.ComponentProps) {
   const countryData = countries.map((country) => ({
     text: country.name,
     value: country.value,
+    flag:country.flag,
   }));
 
   const mapData = [
@@ -113,6 +114,20 @@ export default function CreateTrip({ loaderData }: Route.ComponentProps) {
           ?.coordinates || [],
     },
   ];
+
+  const customComboFieldTemplate = (data: any) => {
+
+    return (
+      <div className="flex items-center gap-3">
+        <img
+          src={countries.find((c) => c.name === data.text)?.flag || ""}
+          alt={data.text}
+          className="size-[20px] ml-3.5 rounded-full border border-gray-300"
+        />
+        <span className="indent-0">{data.text}</span>
+      </div>
+    );
+  }
 
   return (
     <main className="flex flex-col gap-10 pb-20 wrapper">
@@ -131,6 +146,7 @@ export default function CreateTrip({ loaderData }: Route.ComponentProps) {
               fields={{ text: "text", value: "value" }}
               sortOrder="Ascending"
               placeholder="Select a Country"
+              itemTemplate={customComboFieldTemplate}
               className="combo-box"
               change={(e: { value: string | undefined }) => {
                 if (e.value) {

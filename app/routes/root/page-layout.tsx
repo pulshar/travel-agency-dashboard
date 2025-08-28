@@ -13,9 +13,14 @@ export async function clientLoader() {
     const existingUser = await getExistingUser(user.$id);
     return existingUser?.$id ? existingUser : await storeUserData();
   } catch (e) {
-    console.log("Error fetching user", e);
+    console.log("Error fetching user at home", e);
     return redirect("/sign-in");
   }
+}
+
+// HydrateFallback is rendered while the client loader is running
+export function HydrateFallback() {
+  return <div>Loading Home ...</div>;
 }
 
 export default function PageLayout() {

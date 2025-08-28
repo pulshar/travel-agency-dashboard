@@ -14,31 +14,51 @@ export default function RootNavbar() {
     }
 
     return (
-        <nav className={cn(location.pathname === `/travel/${params.tripId}` ? 'bg-white' : 'glassmorphism', 'w-full fixed z-50')}>
-            <header className="root-nav wrapper">
-                <Link to='/' className="link-logo">
-                    <img src="/assets/icons/logo.svg" alt="logo" className="size-[30px]" />
-                    <h1>Tourvisto</h1>
-                </Link>
+      <nav
+        className={cn(
+          location.pathname === `/travel/${params.tripId}`
+            ? "bg-white"
+            : "bg-white/90 backdrop-blur",
+          "w-full fixed z-50 border-b border-gray-200",
+        )}
+      >
+        <header className="root-nav wrapper">
+          <Link to="/" className="link-logo">
+            <img
+              src="/assets/icons/logo.svg"
+              alt="logo"
+              className="size-[30px]"
+            />
+            <h1>Tourvisto</h1>
+          </Link>
 
-                <aside>
-                    {user.userRole === 'admin' && (
-                        <Link to="/dashboard" className={cn('text-base font-normal text-white', {"text-dark-100": location.pathname.startsWith('/travel')})}>
-                            Admin Panel
-                        </Link>
-                    )}
+          <aside>
+            {user.userRole === "admin" && (
+              <Link
+                to="/dashboard"
+                className={cn("text-base font-normal", {
+                  "text-dark-100": location.pathname.startsWith("/travel"),
+                })}
+              >
+                Admin Panel
+              </Link>
+            )}
 
-                    <img src={user?.imageUrl || '/assets/images/david.wepb'} alt="user" referrerPolicy="no-referrer" />
+            <img
+              src={user?.imageUrl || "/assets/images/david.wepb"}
+              alt="user"
+              referrerPolicy="no-referrer"
+            />
 
-                    <button onClick={handleLogout} className="cursor-pointer">
-                        <img
-                            src="/assets/icons/logout.svg"
-                            alt="logout"
-                            className="size-6 rotate-180"
-                        />
-                    </button>
-                </aside>
-            </header>
-        </nav>
-    )
+            <button onClick={handleLogout} className="cursor-pointer">
+              <img
+                src="/assets/icons/logout.svg"
+                alt="logout"
+                className="size-6 rotate-180"
+              />
+            </button>
+          </aside>
+        </header>
+      </nav>
+    );
 }

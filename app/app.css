@@ -38,7 +38,7 @@
   --color-red-50: #fff4ed;
   --color-red-100: #ff543d;
 
-  --background-image-auth: url("/assets/images/auth-img.webp");
+  --background-image-auth: url("/assets/images/hero-img.png");
   --background-image-hero: url("/assets/images/hero-img.png");
   --background-image-card-1: url("/assets/images/card-img-1.jpg");
   --background-image-card-2: url("/assets/images/card-img-2.png");
@@ -98,7 +98,7 @@
     }
   }
   .info-pill {
-    @apply flex items-center gap-1.5;
+    @apply flex items-center gap-1.5 overflow-hidden min-w-[120px];
     img {
       @apply size-5;
     }
@@ -316,7 +316,7 @@
   .root-nav {
     @apply flex justify-between gap-4  items-center;
     a {
-      @apply flex items-center gap-1.5 py-10;
+      @apply flex items-center gap-1.5 py-6;
       h1 {
         @apply text-base md:text-2xl font-bold text-dark-100;
       }
@@ -482,8 +482,8 @@ body {
 
 .glassmorphism {
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 /* ======== css overrides for syncfusion ========= */

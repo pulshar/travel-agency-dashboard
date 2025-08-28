@@ -18,7 +18,7 @@ const Header = ({ title, description, ctaText, ctaUrl }: Props) => {
       <article>
         <h1
           className={cn(
-            "text-dark-100",
+            "text-dark-100 mt-6",
             location.pathname === "/"
               ? "text-2xl md:text-4xl font-bold"
               : "text-xl md:text-2xl font-semibold"
