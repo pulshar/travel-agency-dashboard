@@ -1,6 +1,6 @@
 import { PagerComponent } from "@syncfusion/ej2-react-grids";
 import { useState } from "react";
-import { useSearchParams, type LoaderFunctionArgs } from "react-router";
+import { useNavigate, useSearchParams, type LoaderFunctionArgs } from "react-router";
 import { getAllTrips } from "~/appwrite/trips";
 import { Header, TripCard } from "~/components";
 import { parseTripData } from "~/lib/utils";
@@ -29,13 +29,14 @@ export default function Trips({ loaderData }: Route.ComponentProps) {
   const trips = loaderData.trips as Trip[] | [];
 
   const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
   const initialPage = Number(searchParams.get("page") || "1");
 
   const [currentPage, setCurrentPage] = useState(initialPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.location.search = `?page=${page}`;
+    navigate(`?page=${page}`, { replace: false });
   };
   return (
     <main className="all-users wrapper">

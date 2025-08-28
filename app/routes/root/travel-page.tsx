@@ -8,6 +8,7 @@ import { getUser } from "~/appwrite/auth";
 import { getAllTrips } from "~/appwrite/trips";
 import { Header, TripCard } from "~/components";
 import type { Route } from "./+types/travel-page";
+import { useNavigate } from "react-router";
 
 const FeaturedDestination = ({
   containerClass = "",
@@ -95,13 +96,14 @@ export default function TravelPage({ loaderData }: Route.ComponentProps) {
   const trips = loaderData.trips as Trip[] | [];
 
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const initialPage = Number(searchParams.get("page") || "1");
 
   const [currentPage, setCurrentPage] = useState(initialPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.location.search = `?page=${page}`;
+    navigate(`?page=${page}#trips`, { replace: false });
   };
 
   return (
