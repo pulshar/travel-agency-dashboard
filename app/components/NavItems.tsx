@@ -19,7 +19,7 @@ export default function NavItems({
     <section className="nav-items">
       <Link to="/" className="link-logo">
         <img src="/assets/icons/logo.svg" alt="logo" className="size-[30px]" />
-        <h1>Tourvisto</h1>
+        <h1>Tourall</h1>
       </Link>
 
       <div className="container">
@@ -63,7 +63,7 @@ export default function NavItems({
             <img
               src="/assets/icons/logout.svg"
               alt="logout"
-              className="size-6"
+              className="size-6 ml-2"
             />
           </button>
         </footer>

@@ -2,20 +2,26 @@ import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { Link, redirect } from "react-router";
 import { loginWithGoogle } from "~/appwrite/auth";
 import { account } from "~/appwrite/client";
+import FullLoader from "~/components/FullLoader";
 
 export async function clientLoader() {
   try {
-    const user = await account.get();
+    const user = await account.get().catch(() => null);
 
-    if (user.$id) return redirect("/");
+    if (user && user.$id) {
+      return redirect("/");
+    }
+    return null;
   } catch (e) {
-    console.log("Error fetching user at signin", e);
+    console.error("Error fetching user at sign-in:", e);
   }
 }
 
 // HydrateFallback is rendered while the client loader is running
 export function HydrateFallback() {
-  return <div>Loading sign in...</div>;
+    return (
+     <FullLoader/>
+    );
 }
 
 export default function SignIn() {
@@ -28,18 +34,18 @@ export default function SignIn() {
               <img
                 src="/assets/icons/logo.svg"
                 alt="logo"
-                className="size-[30px]"
+                className="size-[32px]"
               />
             </Link>
-            <h1 className="p-28-bold text-dark-100">Tourvisto</h1>
+            <h1 className="p-28-bold text-gray-700">Tourall</h1>
           </header>
 
-          <article>
-            <h2 className="p-28-semibold text-dark-100 text-center">
-              Start Your Travel Journey
+          <article className="px-8">
+            <h2 className="text-xl font-semibold text-gray-700 text-center">
+              Start your travel journey
             </h2>
 
-            <p className="p-18-regular text-center text-gray-100 !leading-7">
+            <p className="text-center text-gray-100">
               Sign in with Google to manage destinations, itineraries, and user
               activity with ease.
             </p>

@@ -19,7 +19,7 @@ export default function RootNavbar() {
           location.pathname === `/travel/${params.tripId}`
             ? "bg-white"
             : "bg-white/90 backdrop-blur",
-          "w-full fixed z-50 border-b border-gray-200",
+          "w-full fixed z-50 border-b border-gray-200"
         )}
       >
         <header className="root-nav wrapper">
@@ -29,22 +29,25 @@ export default function RootNavbar() {
               alt="logo"
               className="size-[30px]"
             />
-            <h1>Tourvisto</h1>
+            <h1>Tourall</h1>
           </Link>
 
           <aside>
             {user.userRole === "admin" && (
               <Link
                 to="/dashboard"
-                className={cn("text-base font-normal", {
-                  "text-dark-100": location.pathname.startsWith("/travel"),
-                })}
+                className={cn(
+                  "inline-block text-base font-medium px-4 py-1.5 border border-gray-500 rounded-md text-dark-100 transition-colors duration-200 hover:bg-light-200",
+                  {
+                    "text-dark-100": location.pathname.startsWith("/travel"),
+                  }
+                )}
               >
                 Admin Panel
               </Link>
             )}
 
-            <img
+            <img className="hidden sm:block"
               src={user?.imageUrl || "/assets/images/david.wepb"}
               alt="user"
               referrerPolicy="no-referrer"
@@ -54,7 +57,7 @@ export default function RootNavbar() {
               <img
                 src="/assets/icons/logout.svg"
                 alt="logout"
-                className="size-6 rotate-180"
+                className="size-6"
               />
             </button>
           </aside>

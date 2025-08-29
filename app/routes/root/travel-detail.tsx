@@ -66,7 +66,11 @@ export default function TravelDetail({ loaderData }: Route.ComponentProps) {
     <main className="travel-detail pt-40 wrapper">
       <div className="travel-div">
         <Link to="/" className="back-link">
-          <img src="/assets/icons/arrow-left.svg" alt="back icon" />
+          <img
+            src="/assets/icons/arrow-left.svg"
+            alt="back icon"
+            className="arrow-icon transition-transform duration-200 ease-in-out group-hover:-translate-x-1"
+          />
           <span>Go back</span>
         </Link>
 

@@ -2,25 +2,30 @@ import { Outlet, redirect } from "react-router";
 import { getExistingUser, storeUserData } from "~/appwrite/auth";
 import { account } from "~/appwrite/client";
 import Footer from "~/components/Footer";
+import FullLoader from "~/components/FullLoader";
 import RootNavbar from "~/components/RootNavbar";
 
 export async function clientLoader() {
-  try {
-    const user = await account.get();
+    try {
+      const user = await account.get().catch(() => null); 
 
-    if (!user.$id) return redirect("/sign-in");
+      if (!user || !user.$id) {
+        return redirect("/sign-in");
+      }
 
-    const existingUser = await getExistingUser(user.$id);
-    return existingUser?.$id ? existingUser : await storeUserData();
-  } catch (e) {
-    console.log("Error fetching user at home", e);
-    return redirect("/sign-in");
-  }
+      const existingUser = await getExistingUser(user.$id);
+      return existingUser?.$id ? existingUser : await storeUserData();
+    } catch (e) {
+      console.error("Error fetching user at home:", e);
+      return redirect("/sign-in");
+    }
 }
 
 // HydrateFallback is rendered while the client loader is running
 export function HydrateFallback() {
-  return <div>Loading Home ...</div>;
+  return (
+   <FullLoader/>
+  );
 }
 
 export default function PageLayout() {

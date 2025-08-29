@@ -177,6 +177,7 @@ export default function CreateTrip({ loaderData }: Route.ComponentProps) {
               id="duration"
               name="duration"
               type="number"
+              min={1}
               placeholder="Enter a number of days"
               className="form-input placeholder:text-gray-100"
               onChange={(e) => handleChange("duration", Number(e.target.value))}

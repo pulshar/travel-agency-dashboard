@@ -38,8 +38,8 @@
   --color-red-50: #fff4ed;
   --color-red-100: #ff543d;
 
-  --background-image-auth: url("/assets/images/hero-img.png");
-  --background-image-hero: url("/assets/images/hero-img.png");
+  --background-image-auth: url("/assets/images/bg-img.jpg");
+  --background-image-hero: url("/assets/images/bg-img.jpg");
   --background-image-card-1: url("/assets/images/card-img-1.jpg");
   --background-image-card-2: url("/assets/images/card-img-2.png");
   --background-image-card-3: url("/assets/images/card-img-3.png");
@@ -48,8 +48,13 @@
   --background-image-card-6: url("/assets/images/card-img-6.png");
   --background-image-linear100: linear-gradient(
     105deg,
-    rgba(207, 241, 255, 0.8) 14.17%,
-    rgba(255, 255, 255, 0) 54.71%
+    rgba(207, 241, 255, 0.8) 34.17%,
+    rgba(255, 255, 255, 0) 60.71%
+  );
+  --background-image-linear100-mobile: linear-gradient(
+    105deg,
+    rgba(207, 241, 255, 0.8) 44.17%,
+    rgba(255, 255, 255, 0) 110.71%
   );
   --background-image-linear200: linear-gradient(
     39deg,
@@ -89,7 +94,7 @@
     @apply flex flex-col bg-white shadow-400 rounded-10 text-dark-100 overflow-hidden;
   }
   .sign-in-card {
-    @apply flex bg-white flex-col border border-light-100 md:max-w-[510px] rounded-[20px] py-10 px-6 w-full;
+    @apply flex bg-white flex-col border border-light-100 md:max-w-[510px] rounded-[16px] py-10 px-6 w-full;
     header {
       @apply flex items-center gap-1.5 justify-center;
     }
@@ -147,7 +152,7 @@
     @apply bg-hero bg-origin-content bg-cover;
 
     div {
-      @apply flex flex-col bg-linear100 bg-cover;
+      @apply flex flex-col bg-linear100-mobile lg:bg-linear100 bg-cover;
 
       section {
         @apply py-48 justify-center items-start flex flex-col gap-6;
@@ -172,8 +177,14 @@
       @apply flex flex-col lg:flex-row gap-6 lg:gap-10;
     }
 
+    .arrow-icon {
+      @apply transition-transform duration-200 ease-in-out;
+    }
+
     .back-link {
-      @apply flex items-center justify-center gap-2.5 py-3 px-[30px] border border-gray-500 rounded-lg  bg-white h-[50px] md:w-[240px];
+      @apply flex items-center justify-center gap-2.5 py-3 px-[30px] border border-gray-500 rounded-md bg-white h-[50px] md:w-[240px] 
+         text-dark-100 font-medium transition-colors duration-200 
+         hover:bg-light-200 sticky top-4 lg:top-28 z-100;
 
       img {
         @apply size-[17px];
@@ -182,6 +193,9 @@
       span {
         @apply text-base font-semibold text-dark-100;
       }
+    }
+    .back-link:hover .arrow-icon {
+      @apply -translate-x-1;
     }
 
     .container {

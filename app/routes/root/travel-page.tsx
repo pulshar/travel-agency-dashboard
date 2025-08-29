@@ -116,7 +116,7 @@ export default function TravelPage({ loaderData }: Route.ComponentProps) {
                 Plan Your Trip with Ease
               </h1>
 
-              <p className="text-dark-100">
+              <p className="text-dark-100 max-w-[420px]">
                 Customize your travel itinerary in minutes—pick your
                 destination, set your preferences, and explore with confidence.
               </p>
