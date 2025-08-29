@@ -37,7 +37,7 @@ export default function RootNavbar() {
               <Link
                 to="/dashboard"
                 className={cn(
-                  "inline-block text-base font-medium px-4 py-1.5 border border-gray-500 rounded-md text-dark-100 transition-colors duration-200 hover:bg-light-200",
+                  "inline-block text-base font-medium px-4 py-1.5 border border-gray-500 rounded-md text-dark-100 transition-colors duration-200 hover:bg-light-300",
                   {
                     "text-dark-100": location.pathname.startsWith("/travel"),
                   }
