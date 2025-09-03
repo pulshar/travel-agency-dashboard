@@ -243,7 +243,7 @@ const Dashboard = ({ loaderData }: Route.ComponentProps) => {
                   template={(props: UserData) => (
                     <div className="flex items-center gap-1.5 px-4">
                       <img
-                        src={props.imageUrl}
+                        src={props.imageUrl || "/assets/images/david.webp" }
                         alt="user"
                         className="rounded-full size-8 aspect-square"
                         referrerPolicy="no-referrer"

@@ -118,3 +118,26 @@ export const getAllUsers = async (limit: number, offset: number) => {
     return { users: [], total: 0 };
   }
 };
+
+export const loginWithDemoUser = async () => {
+  const demoEmail = "userdemo@userdemo.com";
+  const demoPassword = "password368";
+
+  try {
+    // Intenta loguear al usuario demo
+    await account.createEmailPasswordSession(demoEmail, demoPassword);
+
+    const user = await account.get();
+
+    const existingUser = await getExistingUser(user.$id);
+
+    if (!existingUser) {
+      await storeUserData();
+    }
+
+    // Redirige al inicio
+    return redirect("/");
+  } catch (error: any) {
+    console.error("Error logging in demo user:", error);
+  }
+};

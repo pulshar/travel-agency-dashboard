@@ -1,6 +1,6 @@
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { Link, redirect } from "react-router";
-import { loginWithGoogle } from "~/appwrite/auth";
+import { loginWithDemoUser, loginWithGoogle } from "~/appwrite/auth";
 import { account } from "~/appwrite/client";
 import FullLoader from "~/components/FullLoader";
 
@@ -19,12 +19,11 @@ export async function clientLoader() {
 
 // HydrateFallback is rendered while the client loader is running
 export function HydrateFallback() {
-    return (
-     <FullLoader/>
-    );
+  return <FullLoader />;
 }
 
 export default function SignIn() {
+
   return (
     <main className="auth">
       <section className="size-full glassmorphism flex-center px-6">
@@ -54,7 +53,7 @@ export default function SignIn() {
           <ButtonComponent
             type="button"
             iconCss="e-search-icon"
-            className="button-class !h-11 !w-full"
+            className="button-class !h-11 !w-full mb-4"
             onClick={loginWithGoogle}
           >
             <img
@@ -65,6 +64,14 @@ export default function SignIn() {
             <span className="p-18-semibold text-white">
               Sign in with Google
             </span>
+          </ButtonComponent>
+          <ButtonComponent
+            type="button"
+            iconCss="e-search-icon"
+            className="button-class-secondary !h-11 !w-full"
+            onClick={loginWithDemoUser}
+          >
+            <span className="p-16-semibold">Log in for Demo Purposes</span>
           </ButtonComponent>
         </div>
       </section>

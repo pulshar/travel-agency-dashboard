@@ -459,7 +459,7 @@
     @apply !bg-primary-100 !px-6 !rounded-lg !flex !items-center !justify-center !gap-1.5 !shadow-none !font-figtree !transition-colors !duration-200 !ease-in-out hover:!bg-primary-500;
   }
   .button-class-secondary {
-    @apply !bg-white !px-6 !rounded-lg !flex !items-center !justify-center !gap-1.5 !shadow-sm;
+    @apply !bg-white !border !border-gray-500/50 !text-dark-100 !px-6 !rounded-lg !flex !items-center !justify-center !gap-1.5 !shadow-none !font-figtree !transition-colors !duration-200 !ease-in-out hover:!bg-light-300;
   }
   .form-label {
     @apply text-sm font-normal text-gray-100;

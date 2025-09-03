@@ -48,7 +48,7 @@ export default function RootNavbar() {
             )}
 
             <img className="hidden sm:block"
-              src={user?.imageUrl || "/assets/images/david.wepb"}
+              src={user?.imageUrl || "/assets/images/david.webp"}
               alt="user"
               referrerPolicy="no-referrer"
             />
