@@ -30,7 +30,7 @@ const MobileSidebar = () => {
       </header>
 
       <SidebarComponent
-        width={270}
+        width={280}
         ref={(Sidebar) => (sidebar = Sidebar)}
         created={() => sidebar.hide()}
         closeOnDocumentClick={true}

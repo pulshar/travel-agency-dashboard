@@ -1,3 +1,4 @@
+import { LogOutIcon } from "lucide-react";
 import {
   Link,
   NavLink,
@@ -8,7 +9,7 @@ import {
 import { logoutUser } from "~/appwrite/auth";
 import { sidebarItems } from "~/constants";
 import { cn } from "~/lib/utils";
-import BtnLoader from "./BtnLoader";
+import Tooltip from "./Tooltip";
 
 export default function NavItems({
   handleClick,
@@ -42,17 +43,13 @@ export default function NavItems({
                 cn(
                   "group nav-item",
                   isActive && "bg-primary-100 !text-white pointer-events-none",
-                  isPending && "bg-primary-100/70 !text-white pointer-events-none justify-between"
+                  isPending &&
+                    "bg-primary-100/20 !text-primary-100 pointer-events-none justify-between"
                 )
               }
               onClick={handleClick}
             >
-              {({ isPending }) => (
-                <>
-                  <span>{label}</span>
-                  {isPending && isNavigating && <BtnLoader borderColor="border-light-300" />}
-                </>
-              )}
+              <span>{label}</span>
             </NavLink>
           ))}
         </nav>
@@ -68,14 +65,14 @@ export default function NavItems({
             <h2>{user?.name}</h2>
             <p>{user?.email}</p>
           </article>
-
-          <button onClick={handleLogout} className="cursor-pointer">
-            <img
-              src="/assets/icons/logout.svg"
-              alt="logout"
-              className="size-6 ml-2"
-            />
-          </button>
+          <Tooltip text="Log out">
+            <button onClick={handleLogout} className="cursor-pointer group">
+              <LogOutIcon
+                strokeWidth={1.5}
+                className="group-hover:translate-x-[2px] transition-transform"
+              />
+            </button>
+          </Tooltip>
         </footer>
       </div>
     </section>

@@ -42,7 +42,7 @@ export default function Trips({ loaderData }: Route.ComponentProps) {
     <main className="all-users wrapper">
       <Header
         title="Manage Trips"
-        description="View and edit AI-generated travel plans"
+        description="View, create, and edit AI-generated travel plans"
         ctaText="Create a trip"
         ctaUrl="/trips/create"
       />

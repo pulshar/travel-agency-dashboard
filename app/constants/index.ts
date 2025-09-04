@@ -196,7 +196,7 @@ export const users = [
     email: "john.doe@example.com",
     imageUrl: "/assets/images/david.webp",
     dateJoined: formatDate("2025-01-01"),
-    itineraryCreated: 10,
+    tripsCreated: 10,
     userRole: "user",
   },
   {
@@ -205,7 +205,7 @@ export const users = [
     email: "jane.smith@example.com",
     imageUrl: "/assets/images/david.webp",
     dateJoined: formatDate("2025-01-02"),
-    itineraryCreated: 4,
+    tripsCreated: 4,
     userRole: "user",
   },
   {
@@ -214,7 +214,7 @@ export const users = [
     email: "john.smith@example.com",
     imageUrl: "/assets/images/david.webp",
     dateJoined: formatDate("2025-01-03"),
-    itineraryCreated: 8,
+    tripsCreated: 8,
     userRole: "admin",
   },
 ];

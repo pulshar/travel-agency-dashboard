@@ -71,9 +71,9 @@ export default function SignIn() {
                   Sign in with Google
                 </span>
               </ButtonComponent>
-              <div className="after:border-border text-gray-500/50 relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center  after:border-t w-[85%] mx-auto py-6">
+              <div className="after:border-border text-gray-500/50 relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center  after:border-t w-[85%] mx-auto py-4">
                 <span className="bg-white relative z-10 px-2 text-gray-100">
-                  or continue as
+                  or
                 </span>
               </div>
               <ButtonComponent
@@ -81,8 +81,8 @@ export default function SignIn() {
                 className="button-class-secondary !h-11 !w-full"
                 onClick={loginWithDemoUser}
               >
-                <UserStarIcon size={18} />
-                <span className="p-16-semibold">Explore as admin</span>
+                <UserStarIcon size={20} />
+                <span className="p-18-semibold">Explore admin role</span>
               </ButtonComponent>
             </div>
           </div>

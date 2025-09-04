@@ -2,12 +2,13 @@ declare interface BaseUser {
   id: string;
   name: string;
   email: string;
+  password?: string;
   dateJoined: string;
   imageUrl: string;
 }
 
 declare interface UserData extends BaseUser {
-  itineraryCreated: number | string;
+  tripsCreated: number | string;
   userRole: "user" | "admin";
 }
 

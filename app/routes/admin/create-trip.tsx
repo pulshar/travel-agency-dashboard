@@ -5,7 +5,7 @@ import {
   LayersDirective,
   MapsComponent,
 } from "@syncfusion/ej2-react-maps";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { account } from "~/appwrite/client";
 import { Header } from "~/components";
@@ -13,6 +13,7 @@ import { comboBoxItems, selectItems } from "~/constants";
 import { world_map } from "~/constants/world_map";
 import { cn, formatKey } from "~/lib/utils";
 import type { Route } from "./+types/create-trip";
+import { useDemoUser } from "~/hooks/useDemouser";
 
 export const loader = async () => {
   const response = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,latlng,maps");
@@ -41,6 +42,8 @@ export default function CreateTrip({ loaderData }: Route.ComponentProps) {
   });
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const { isUserDemo,tripsLimitReached } = useDemoUser()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -129,11 +132,16 @@ export default function CreateTrip({ loaderData }: Route.ComponentProps) {
     );
   }
 
+   useEffect(() => {
+     if (isUserDemo && tripsLimitReached) {
+       navigate("/trips"); 
+     }
+   }, []);
   return (
     <main className="flex flex-col gap-10 pb-20 wrapper">
       <Header
         title="Add a New Trip"
-        description="View and edit AI Generated travel plans"
+        description="Complete the form to get a custom AI travel plan"
       />
 
       <section className="mt-2.5 wrapper-md">

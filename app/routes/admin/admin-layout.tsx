@@ -1,8 +1,10 @@
 import { SidebarComponent } from "@syncfusion/ej2-react-navigations";
-import { Outlet, redirect } from "react-router";
+import { AnimatePresence } from "motion/react";
+import { Outlet, redirect, useLoaderData, useNavigation } from "react-router";
 import { getExistingUser, storeUserData } from "~/appwrite/auth";
 import { account } from "~/appwrite/client";
 import { MobileSidebar, NavItems } from "~/components";
+import FullLoader from "~/components/FullLoader";
 
 export async function clientLoader() {
   try {
@@ -23,20 +25,39 @@ export async function clientLoader() {
   }
 }
 
-export default function AdminLayout() {
+// HydrateFallback is rendered while the client loader is running
+export function HydrateFallback() {
   return (
-    <div className="admin-layout">
-      <MobileSidebar />
+    <AnimatePresence>
+      <FullLoader />
+    </AnimatePresence>
+  );
+}
 
-      <aside className="w-full max-w-[270px] hidden lg:block">
-        <SidebarComponent width={270} enableGestures={false}>
-          <NavItems />
-        </SidebarComponent>
-      </aside>
+export default function AdminLayout() {
+  const navigation = useNavigation();
+  const isNavigating = navigation.state !== "idle";
+  const user = useLoaderData<UserData>(); 
+  return (
+    <div className="admin-container">
+      {isNavigating && (
+        <AnimatePresence>
+          <FullLoader />
+        </AnimatePresence>
+      )}
+      <div className="admin-layout">
+        <MobileSidebar />
 
-      <aside className="children">
-        <Outlet />
-      </aside>
+        <aside className="w-full max-w-[280px] hidden lg:block">
+          <SidebarComponent width={280} enableGestures={false}>
+            <NavItems />
+          </SidebarComponent>
+        </aside>
+
+        <aside className="children">
+          <Outlet context={{ user }} />
+        </aside>
+      </div>
     </div>
   );
 }
