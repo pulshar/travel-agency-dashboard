@@ -48,7 +48,7 @@ const Header = ({ title, description, ctaText, ctaUrl }: Props) => {
               {description}
             </p>
             {isUserDemo && isSomeTripPage && !isCreateTripPage && (
-              <Tooltip text="Demo user can't edit">
+              <Tooltip text="User demo can't edit">
                 <InfoIcon size={18} className="cursor-pointer" />
               </Tooltip>
             )}

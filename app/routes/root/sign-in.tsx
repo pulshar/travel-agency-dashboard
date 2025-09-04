@@ -31,6 +31,13 @@ export function HydrateFallback() {
 export default function SignIn() {
   return (
     <main className="grid min-h-svh lg:grid-cols-2">
+      <div className="bg-primary-500/15 relative hidden lg:block overflow-hidden">
+        <img
+          src="/assets/images/bg-img.jpg"
+          alt="Image"
+          className="absolute opacity-80 blur-[1px] inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+        />
+      </div>
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-lg">
@@ -81,19 +88,12 @@ export default function SignIn() {
                 className="button-class-secondary !h-11 !w-full"
                 onClick={loginWithDemoUser}
               >
-                <UserStarIcon size={20} />
-                <span className="p-18-semibold">Explore admin role</span>
+                <UserStarIcon size={18} />
+                <span className="p-16-semibold">Log in as Admin</span>
               </ButtonComponent>
             </div>
           </div>
         </div>
-      </div>
-      <div className="bg-primary-500/15 relative hidden lg:block overflow-hidden">
-        <img
-          src="/assets/images/bg-img.jpg"
-          alt="Image"
-          className="absolute opacity-80 blur-[1px] inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-        />
       </div>
     </main>
   );

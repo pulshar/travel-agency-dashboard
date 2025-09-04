@@ -19,11 +19,11 @@ export default function Tooltip({
   };
 
   return (
-    <div className="relative group inline-block">
+    <div className="relative group inline-flex">
       {children}
       <span
         className={cn(
-          "absolute bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none",
+          "absolute bg-gray-800 text-gray-200 text-xs px-2.5 py-1.5 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none",
           positionClasses[position]
         )}
       >
