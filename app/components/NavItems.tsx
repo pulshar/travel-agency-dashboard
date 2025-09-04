@@ -1,7 +1,14 @@
-import { Link, NavLink, useLoaderData, useNavigate } from "react-router";
+import {
+  Link,
+  NavLink,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+} from "react-router";
 import { logoutUser } from "~/appwrite/auth";
 import { sidebarItems } from "~/constants";
 import { cn } from "~/lib/utils";
+import BtnLoader from "./BtnLoader";
 
 export default function NavItems({
   handleClick,
@@ -10,6 +17,9 @@ export default function NavItems({
 }) {
   const user = useLoaderData();
   const navigate = useNavigate();
+
+  const navigation = useNavigation();
+  const isNavigating = navigation.state !== "idle";
 
   const handleLogout = async () => {
     await logoutUser();
@@ -25,23 +35,23 @@ export default function NavItems({
       <div className="container">
         <nav>
           {sidebarItems.map(({ id, href, icon, label }) => (
-            <NavLink to={href} key={id}>
-              {({ isActive }: { isActive: boolean }) => (
-                <div
-                  className={cn("group nav-item", {
-                    "bg-primary-100 !text-white": isActive,
-                  })}
-                  onClick={handleClick}
-                >
-                  <img
-                    src={icon}
-                    alt={label}
-                    className={`group-hover:brightness-0 size-0 group-hover:invert ${
-                      isActive ? "brightness-0 invert" : "text-dark-200"
-                    }`}
-                  />
-                  {label}
-                </div>
+            <NavLink
+              to={href}
+              key={id}
+              className={({ isActive, isPending }) =>
+                cn(
+                  "group nav-item",
+                  isActive && "bg-primary-100 !text-white pointer-events-none",
+                  isPending && "bg-primary-100/70 !text-white pointer-events-none justify-between"
+                )
+              }
+              onClick={handleClick}
+            >
+              {({ isPending }) => (
+                <>
+                  <span>{label}</span>
+                  {isPending && isNavigating && <BtnLoader borderColor="border-light-300" />}
+                </>
               )}
             </NavLink>
           ))}

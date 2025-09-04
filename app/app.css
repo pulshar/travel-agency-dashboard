@@ -94,7 +94,7 @@
     @apply flex flex-col bg-white shadow-400 rounded-10 text-dark-100 overflow-hidden;
   }
   .sign-in-card {
-    @apply flex bg-white flex-col border border-light-100 md:max-w-[510px] rounded-[16px] py-10 px-6 w-full;
+    @apply flex bg-white flex-col border border-light-100 rounded-[16px] py-10 px-6 w-full;
     header {
       @apply flex items-center gap-1.5 justify-center;
     }
@@ -480,10 +480,13 @@
     @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7;
   }
   .nav-item {
-    @apply flex items-center text-xs md:text-lg font-normal cursor-pointer gap-2.5 py-[18px] px-3.5 rounded-lg text-dark-200 hover:bg-primary-100 hover:text-white;
+    @apply flex items-center text-xs md:text-lg font-normal cursor-pointer gap-2.5 py-[18px] px-5 rounded-lg text-dark-200 hover:bg-primary-100/70 hover:text-white transition-colors;
   }
   .combo-box {
     @apply !p-3.5 !border w-full !border-light-400 !rounded-xl !text-base !text-dark-300 !font-normal;
+  }
+  .disabled {
+    @apply cursor-default pointer-events-none;
   }
 }
 

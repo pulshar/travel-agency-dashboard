@@ -124,7 +124,7 @@ export const loginWithDemoUser = async () => {
   const demoPassword = "password368";
 
   try {
-    // Intenta loguear al usuario demo
+
     await account.createEmailPasswordSession(demoEmail, demoPassword);
 
     const user = await account.get();
@@ -134,9 +134,7 @@ export const loginWithDemoUser = async () => {
     if (!existingUser) {
       await storeUserData();
     }
-
-    // Redirige al inicio
-    return redirect("/");
+    window.location.reload();
   } catch (error: any) {
     console.error("Error logging in demo user:", error);
   }

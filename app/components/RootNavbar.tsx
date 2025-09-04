@@ -1,8 +1,13 @@
-import {Link, useLoaderData, useLocation, useNavigate, useParams} from "react-router";
+import {Link, useLoaderData, useLocation, useNavigate, useNavigation, useParams} from "react-router";
 import {logoutUser} from "~/appwrite/auth";
 import {cn} from "~/lib/utils";
+import BtnLoader from "./BtnLoader";
 
 export default function RootNavbar() {
+
+  const navigation = useNavigation();
+  const isNavigating = navigation.state !== "idle";
+
     const navigate = useNavigate();
     const location = useLocation()
     const params = useParams();
@@ -36,18 +41,16 @@ export default function RootNavbar() {
             {user.userRole === "admin" && (
               <Link
                 to="/dashboard"
-                className={cn(
-                  "inline-block text-base font-medium px-4 py-1.5 border border-gray-500 rounded-md text-dark-100 transition-colors duration-200 hover:bg-light-300",
-                  {
-                    "text-dark-100": location.pathname.startsWith("/travel"),
-                  }
-                )}
+                className={`inline-flex items-center justify-center gap-2 text-base w-[140px] h-[38px] font-medium px-4 py-1.5 border border-gray-500 rounded-md text-dark-100 transition-colors duration-200 hover:bg-light-300 ${
+                  isNavigating && "disabled bg-light-300"
+                }`}
               >
-                Admin Panel
+                  Admin Panel
               </Link>
             )}
 
-            <img className="hidden sm:block"
+            <img
+              className="hidden sm:block"
               src={user?.imageUrl || "/assets/images/david.webp"}
               alt="user"
               referrerPolicy="no-referrer"
