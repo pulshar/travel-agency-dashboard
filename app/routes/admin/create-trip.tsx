@@ -13,7 +13,7 @@ import { comboBoxItems, selectItems } from "~/constants";
 import { world_map } from "~/constants/world_map";
 import { cn, formatKey } from "~/lib/utils";
 import type { Route } from "./+types/create-trip";
-import { useDemoUser } from "~/hooks/useDemouser";
+import { useDemoUser } from "~/hooks/useDemoUser";
 
 export const loader = async () => {
   const response = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,latlng,maps");

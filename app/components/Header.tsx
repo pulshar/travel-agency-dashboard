@@ -5,7 +5,8 @@ import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { InfoIcon } from "lucide-react";
 import Alert from "./Alert";
 import Tooltip from "./Tooltip";
-import { useDemoUser } from "~/hooks/useDemouser";
+import { useDemoUser } from "~/hooks/useDemoUser";
+
 
 interface Props {
   title: string;

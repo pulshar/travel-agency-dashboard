@@ -14,7 +14,7 @@ export function useDemoUser(passedUser?: UserType) {
 
   const isUserDemo = user?.email === "userdemo@userdemo.com";
   const totalTrips = isUserDemo ? user.tripsCreated ?? 0 : 0;
-  const tripsLimitReached = totalTrips >= 1;
+  const tripsLimitReached = totalTrips >= 10;
 
   return { user, isUserDemo, totalTrips, tripsLimitReached };
 }
