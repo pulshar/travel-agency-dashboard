@@ -78,7 +78,7 @@
     @apply text-red-500 text-base font-medium text-center;
   }
   .all-users {
-    @apply w-full min-h-screen  flex flex-col gap-10;
+    @apply w-full flex flex-col gap-10;
   }
   .card {
     @apply p-6 flex flex-col gap-6 bg-white shadow-400 rounded-10;
@@ -380,7 +380,7 @@
     }
   }
   .user-trip {
-    @apply pb-20 flex flex-col lg:flex-row gap-5 justify-between;
+    @apply flex flex-col lg:flex-row gap-5 justify-between;
   }
 
   .userRole-column {
@@ -388,7 +388,7 @@
   }
 
   .dashboard {
-    @apply flex flex-col gap-10 w-full  pb-20;
+    @apply flex flex-col gap-10 w-full pb-10 md:pb-20;
 
     .container {
       @apply flex flex-col gap-5 mt-2.5;
@@ -568,7 +568,7 @@ body {
   right: 40px;
 }
 .e-pager .e-currentitem.e-numericitem {
-    background: var(--color-primary-100) !important;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+  background: var(--color-primary-100) !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }

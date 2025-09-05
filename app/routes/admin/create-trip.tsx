@@ -138,7 +138,7 @@ export default function CreateTrip({ loaderData }: Route.ComponentProps) {
      }
    }, []);
   return (
-    <main className="flex flex-col gap-10 pb-20 wrapper">
+    <main className="flex flex-col gap-10 pb-10 md:pb-20 wrapper">
       <Header
         title="Add a New Trip"
         description="Complete the form to get a custom AI travel plan"

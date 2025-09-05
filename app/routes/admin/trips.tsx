@@ -42,13 +42,13 @@ export default function Trips({ loaderData }: Route.ComponentProps) {
     <main className="all-users wrapper">
       <Header
         title="Manage Trips"
-        description="View, create, and edit AI-generated travel plans"
+        description="View, create, and edit AI generated trips"
         ctaText="Create a trip"
         ctaUrl="/trips/create"
       />
 
-      <section>
-        <div className="trip-grid mb-4">
+      <section className="pb-10 md:pb-20">
+        <div className="trip-grid mb-10">
           {trips.map((trip) => (
             <TripCard
               key={trip.id}
@@ -67,7 +67,6 @@ export default function Trips({ loaderData }: Route.ComponentProps) {
           pageSize={loaderData.limit}
           currentPage={currentPage}
           click={(args) => handlePageChange(args.currentPage)}
-          cssClass="!mb-4"
         />
       </section>
     </main>

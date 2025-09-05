@@ -194,7 +194,7 @@ export default function TravelPage({ loaderData }: Route.ComponentProps) {
         </div>
       </section>
 
-      <section id="trips" className="py-20 wrapper flex flex-col gap-10">
+      <section id="trips" className="pt-20 pb-10 md:pb-20 wrapper flex flex-col gap-10">
         <Header
           title="Handpicked Trips"
           description="Browse well-planned trips designed for your travel style"
@@ -219,7 +219,6 @@ export default function TravelPage({ loaderData }: Route.ComponentProps) {
           pageSize={8}
           currentPage={currentPage}
           click={(args) => handlePageChange(args.currentPage)}
-          cssClass="!mb-4"
         />
       </section>
     </main>

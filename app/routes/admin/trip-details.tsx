@@ -64,7 +64,7 @@ export default function TripDetails({ loaderData }: Route.ComponentProps) {
     <main className="travel-detail wrapper">
       <Header
         title="Trip Details"
-        description="View and edit AI-generated travel plans"
+        description="View and edit AI generated trips"
       />
 
       <section className="container wrapper-md">
