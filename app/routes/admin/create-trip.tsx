@@ -144,7 +144,7 @@ export default function CreateTrip({ loaderData }: Route.ComponentProps) {
         description="Complete the form to get a custom AI travel plan"
       />
 
-      <section className="mt-2.5 wrapper-md">
+      <section className="mt-2.5 wrapper-sm">
         <form className="trip-form" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="country">Country</label>

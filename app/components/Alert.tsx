@@ -40,7 +40,7 @@ export default function Alert({ variant = "info", children }: AlertProps) {
 
   return (
     <div
-      className={`flex items-center gap-2 p-4 mb-4 border rounded-lg ${container}`}
+      className={`flex items-center gap-2 p-4 border rounded-lg ${container}`}
       role="alert"
     >
       {icon}

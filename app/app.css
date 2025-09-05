@@ -141,10 +141,10 @@
   .trip-form {
     @apply flex flex-col gap-6 py-6 bg-white border border-light-200 rounded-xl shadow-100;
     div {
-      @apply w-full flex flex-col gap-2.5 px-6 relative;
+      @apply w-full flex flex-col gap-1 px-6 relative;
     }
     label {
-      @apply text-sm font-normal text-gray-100;
+      @apply text-sm font-medium text-gray-700;
     }
   }
 
@@ -413,7 +413,10 @@
     @apply w-full max-w-7xl mx-auto px-4 lg:px-8;
   }
   .wrapper-md {
-    @apply w-full max-w-3xl;
+    @apply w-full md:max-w-3xl;
+  }
+  .wrapper-sm {
+    @apply w-full md:max-w-2xl;
   }
   .flex-center {
     @apply flex justify-center items-center;
@@ -464,8 +467,9 @@
   .form-label {
     @apply text-sm font-normal text-gray-100;
   }
-  .form-input {
-    @apply p-3.5 border border-light-400 rounded-xl text-base text-dark-300 font-normal;
+  .form-input,
+  input.combo-box {
+    @apply !px-3.5 !py-3 border !border-light-400 focus:!outline-1 focus:!outline-blue-300 !rounded-md !text-base !font-figtree !text-dark-100 font-normal;
   }
   .comboBox-popup {
     @apply absolute z-10 top-24 bg-white border border-gray-200 rounded-xl shadow-200 h-[250px] w-full md:max-w-[660px] overflow-hidden;
@@ -480,7 +484,7 @@
     @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7;
   }
   .nav-item {
-    @apply flex items-center text-xs md:text-lg font-normal cursor-pointer gap-2.5 py-[18px] px-5 rounded-lg text-dark-200 hover:bg-primary-100/20 hover:text-primary-100 transition-colors;
+    @apply flex items-center text-xs md:text-lg font-normal cursor-pointer gap-2.5 py-[18px] px-5 rounded-lg text-dark-200 hover:bg-primary-100/20 hover:text-primary-100 transition-colors font-figtree;
   }
   .combo-box {
     @apply !p-3.5 !border w-full !border-light-400 !rounded-xl !text-base !text-dark-300 !font-normal;
@@ -571,4 +575,7 @@ body {
   background: var(--color-primary-100) !important;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+.e-maps {
+  padding: 0;
 }
